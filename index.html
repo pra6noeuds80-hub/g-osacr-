@@ -289,7 +289,7 @@ nav{position:sticky;top:0}
 <label>Fuseau horaire (par exemple Europe/Paris)<input type="text" id="as_tz" value="Europe/Paris"></label>
 <div class="row"><button id="as_go" class="asb">Calculer mon thème</button></div><p id="as_msg" class="note" style="margin-top:0"></p></div>
 <div class="note">Zodiaque tropical, maisons Placidus, positions calculées à l’ordre du demi-degré près. Sans heure exacte, l’Ascendant et les maisons ne sont pas fiables : les positions des planètes le restent.</div></div>
-<div id="as_out"></div><p class="mu" style="font-size:.8rem;margin-top:24px">© 2026 Racine Pascal. Tous droits réservés.</p></div></div>
+<div id="as_out"></div><p class="mu" style="font-size:.8rem;margin-top:24px">© 2026 pra6noeuds80. Tous droits réservés.</p></div></div>
 <script>(function(){
 const $=i=>document.getElementById(i),TAU=Math.PI*2,PI=Math.PI;
 /* ---- Cartes des formes ---- */
@@ -829,7 +829,7 @@ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=
 function signedCv(){const s=$('as_g'),k=document.createElement('canvas');k.width=s.width;k.height=s.height;const x=k.getContext('2d');x.drawImage(s,0,0);x.font='18px Georgia,serif';x.fillStyle='rgba(238,230,212,.75)';x.textAlign='right';x.textBaseline='bottom';x.fillText('© Racine Pascal',k.width-18,k.height-14);return k}
 function pdfBlob(cv,title,lines){const jb=atob(cv.toDataURL('image/jpeg',.93).split(',')[1]),jpg=new Uint8Array(jb.length);for(let i=0;i<jb.length;i++)jpg[i]=jb.charCodeAt(i);
 const enc=s=>{let o='';for(const ch of s){const c=ch.charCodeAt(0);o+=(c==40||c==41||c==92)?'\\'+ch:c<32?' ':c<127?ch:c<256?'\\'+c.toString(8).padStart(3,'0'):"'"}return o},sz=515,x0=(595-sz)/2,y0=842-110-sz,te=new TextEncoder();
-let c=`BT /F1 20 Tf 40 790 Td (${enc(title)}) Tj ET\n`;lines.forEach((l,i)=>c+=`BT /F1 10 Tf 40 ${y0-22-i*14} Td (${enc(l)}) Tj ET\n`);c+=`BT /F1 9 Tf 40 28 Td (${enc('© 2026 Racine Pascal. Tous droits réservés.')}) Tj ET\n`;c+=`q ${sz} 0 0 ${sz} ${x0} ${y0} cm /Im0 Do Q\n`;
+let c=`BT /F1 20 Tf 40 790 Td (${enc(title)}) Tj ET\n`;lines.forEach((l,i)=>c+=`BT /F1 10 Tf 40 ${y0-22-i*14} Td (${enc(l)}) Tj ET\n`);c+=`BT /F1 9 Tf 40 28 Td (${enc('© 2026 pra6noeuds80. Tous droits réservés.')}) Tj ET\n`;c+=`q ${sz} 0 0 ${sz} ${x0} ${y0} cm /Im0 Do Q\n`;
 const parts=[],offs=[];let len=0;const add=b=>{if(typeof b=='string')b=te.encode(b);parts.push(b);len+=b.length},obj=(n,body,st)=>{offs[n]=len;add(`${n} 0 obj\n${body}`);if(st){add('\nstream\n');add(st);add('\nendstream')}add('\nendobj\n')};
 add('%PDF-1.4\n');obj(1,'<</Type/Catalog/Pages 2 0 R>>');obj(2,'<</Type/Pages/Kids[3 0 R]/Count 1>>');obj(3,'<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]/Resources<</Font<</F1 6 0 R>>/XObject<</Im0 5 0 R>>>>/Contents 4 0 R>>');
 const cb=te.encode(c);obj(4,`<</Length ${cb.length}>>`,cb);obj(5,`<</Type/XObject/Subtype/Image/Width ${cv.width}/Height ${cv.height}/ColorSpace/DeviceRGB/BitsPerComponent 8/Filter/DCTDecode/Length ${jpg.length}>>`,jpg);obj(6,'<</Type/Font/Subtype/Type1/BaseFont/Helvetica/Encoding/WinAnsiEncoding>>');
